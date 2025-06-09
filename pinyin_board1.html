@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PINYIN RANDOM BOX 1</title>
+  <style>
+    body { background: linear-gradient(135deg,#a80000,#ffcc00 80%); min-height:100vh; font-family:'Sarabun',sans-serif; margin:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+    h1 { color:#ffd700; text-shadow:2px 2px 8px #a80000; margin-bottom:16px; letter-spacing:2px; font-size:2.5em;}
+    .board { display:grid; grid-template-columns:repeat(3,80px); grid-template-rows:repeat(4,80px); gap:18px; background:rgba(255,255,255,0.08); padding:24px; border:4px solid #ffd700; border-radius:16px;}
+    .pinyin-btn { background:radial-gradient(circle,#ffd700 40%,#b71c1c); border:2px solid #ffd700; border-radius:18px; box-shadow:0 2px 8px #700; font-size:2em; font-weight:bold; color:#a80000; cursor:pointer; transition:0.1s; }
+    .pinyin-btn:active { transform:scale(0.95); background:#ffd700;}
+  </style>
+</head>
+<body>
+  <h1>PINYIN RANDOM BOX 1</h1>
+  <div class="board" id="board"></div>
+  <script>
+    const pinyinSet = [
+      {text:"b", sound:"b.mp3"},
+      {text:"f", sound:"f.mp3"},
+      {text:"g", sound:"g.mp3"},
+      {text:"k", sound:"k.mp3"},
+      {text:"q", sound:"q.mp3"},
+      {text:"sh",sound:"sh.mp3"},
+      {text:"y", sound:"y.mp3"},
+      {text:"l", sound:"l.mp3"},
+      {text:"p", sound:"p.mp3"},
+      {text:"m", sound:"m.mp3"},
+      {text:"zh",sound:"zh.mp3"},
+      {text:"r", sound:"r.mp3"}
+    ];
+    const board = document.getElementById('board');
+    pinyinSet.forEach(item => {
+      const btn = document.createElement('button');
+      btn.className = 'pinyin-btn';
+      btn.textContent = item.text;
+      btn.onclick = () => new Audio(item.sound).play();
+      board.appendChild(btn);
+    });
+  </script>
+</body>
+</html>
